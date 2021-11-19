@@ -16,13 +16,14 @@
 
 package uk.gov.hmrc.decisionservice.ruleEngines
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.test.Helpers.{await, defaultAwaitTimeout}
 import uk.gov.hmrc.decisionservice.models.Score
 import uk.gov.hmrc.decisionservice.models.enums.{DecisionServiceVersion, ExitEnum, ResultEnum, WeightedAnswerEnum}
 import uk.gov.hmrc.decisionservice.ruleSets.MatrixOfMatricesRules
 
-class ResultRuleEngineSpec extends WordSpecLike with Matchers {
+class ResultRuleEngineSpec extends AnyWordSpecLike with Matchers {
 
   implicit val defaultDecisionServiceVersion: DecisionServiceVersion.Value = DecisionServiceVersion.v1_5_0
 

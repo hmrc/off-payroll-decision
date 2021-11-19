@@ -17,8 +17,8 @@
 package uk.gov.hmrc.decisionservice.controllers
 
 import akka.actor.ActorSystem
-import akka.stream.ActorMaterializer
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.http.Status.{BAD_REQUEST, OK}
 import play.api.libs.json.Json.toJson
 import play.api.libs.json.{JsValue, Json}
@@ -29,12 +29,10 @@ import uk.gov.hmrc.decisionservice.models._
 import uk.gov.hmrc.decisionservice.models.enums.{DecisionServiceVersion, ResultEnum}
 import uk.gov.hmrc.decisionservice.services.mocks.MockDecisionService
 import uk.gov.hmrc.decisionservice.util.TestFixture
-
 import scala.concurrent.Future
 
-class DecisionControllerSpec extends TestFixture with MockDecisionService with WordSpecLike with Matchers {
+class DecisionControllerSpec extends TestFixture with MockDecisionService with AnyWordSpecLike with Matchers {
   implicit val system = ActorSystem()
-  implicit val materializer = ActorMaterializer()
 
   val fakeRequest = FakeRequest()
   val json: JsValue = Json.parse("{}")
@@ -78,8 +76,9 @@ class DecisionControllerSpec extends TestFixture with MockDecisionService with W
       val response: Future[Result] = testDecisionController.decide()(fakeRequest)
 
       status(response) shouldBe BAD_REQUEST
+
       contentAsJson(response) shouldBe Json.parse(
-        """{"code":400,"message":"{\"obj.version\":[{\"msg\":[\"error.path.missing\"],\"args\":[]}],\"obj.interview\":[{\"msg\":[\"error.path.missing\"],\"args\":[]}],\"obj.correlationID\":[{\"msg\":[\"error.path.missing\"],\"args\":[]}]}","details":"{\"incorrectRequest\":List((/interview,List(JsonValidationError(List(error.path.missing),WrappedArray()))), (/version,List(JsonValidationError(List(error.path.missing),WrappedArray()))), (/correlationID,List(JsonValidationError(List(error.path.missing),WrappedArray()))))}"}"""
+        """{"code":400,"message":"{\"obj.interview\":[{\"msg\":[\"error.path.missing\"],\"args\":[]}],\"obj.version\":[{\"msg\":[\"error.path.missing\"],\"args\":[]}],\"obj.correlationID\":[{\"msg\":[\"error.path.missing\"],\"args\":[]}]}","details":"{\"incorrectRequest\":List((/interview,List(JsonValidationError(List(error.path.missing),WrappedArray()))), (/version,List(JsonValidationError(List(error.path.missing),WrappedArray()))), (/correlationID,List(JsonValidationError(List(error.path.missing),WrappedArray()))))}"}"""
       )
     }
 

@@ -16,13 +16,14 @@
 
 package uk.gov.hmrc.decisionservice.ruleEngines
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.test.Helpers.{await, defaultAwaitTimeout}
 import uk.gov.hmrc.decisionservice.models.PersonalService
 import uk.gov.hmrc.decisionservice.models.enums.{DecisionServiceVersion, WeightedAnswerEnum}
 import uk.gov.hmrc.decisionservice.ruleSets.PersonalServiceRules
 
-class PersonalServiceRuleEngineSpec extends WordSpecLike with Matchers {
+class PersonalServiceRuleEngineSpec extends AnyWordSpecLike with Matchers {
 
   object TestControlDecisionServiceRuleEngine extends PersonalServiceRuleEngine
 

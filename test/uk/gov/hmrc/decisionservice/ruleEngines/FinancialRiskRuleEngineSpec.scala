@@ -16,13 +16,14 @@
 
 package uk.gov.hmrc.decisionservice.ruleEngines
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.test.Helpers.{await, defaultAwaitTimeout}
 import uk.gov.hmrc.decisionservice.models.FinancialRisk
 import uk.gov.hmrc.decisionservice.models.enums.{DecisionServiceVersion, WeightedAnswerEnum}
 import uk.gov.hmrc.decisionservice.ruleSets.FinancialRiskRules
 
-class FinancialRiskRuleEngineSpec extends WordSpecLike with Matchers {
+class FinancialRiskRuleEngineSpec extends AnyWordSpecLike with Matchers {
 
   object TestFinancialRiskRuleEngine extends FinancialRiskRuleEngine
 

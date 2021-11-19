@@ -17,7 +17,7 @@
 package uk.gov.hmrc.decisionservice.controllers
 
 import com.google.inject.Inject
-import play.api.Logger.logger
+import play.api.Logger
 import play.api.libs.json._
 import play.api.mvc.{Action, MessagesControllerComponents}
 import uk.gov.hmrc.decisionservice.models.{DecisionRequest, ErrorResponse}
@@ -30,6 +30,7 @@ class DecisionController @Inject()(mcc: MessagesControllerComponents,
                                    service: DecisionService) extends BackendController(mcc) {
 
   implicit val ec: ExecutionContext = defaultExecutionContext
+  val logger: Logger = Logger(getClass)
 
   def decide(): Action[JsValue] = Action.async(parse.json) { request =>
     request.body.validate[DecisionRequest] match {

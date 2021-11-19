@@ -16,7 +16,8 @@
 
 package uk.gov.hmrc.decisionservice.config.ruleSets.v1_5_0
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.libs.json.Json
 import uk.gov.hmrc.decisionservice.config.ruleSets.BaseRuleSpec
@@ -25,7 +26,7 @@ import uk.gov.hmrc.decisionservice.models.enums.WeightedAnswerEnum._
 import uk.gov.hmrc.decisionservice.ruleSets.MatrixOfMatricesRules_v150
 import scala.language.implicitConversions
 
-class MatrixOfMatricesRulesSpec extends BaseRuleSpec with GuiceOneAppPerSuite with WordSpecLike with Matchers {
+class MatrixOfMatricesRulesSpec extends BaseRuleSpec with GuiceOneAppPerSuite with AnyWordSpecLike with Matchers {
 
   implicit def enumTuple[E <: Enumeration, B <: Enumeration](x: (E#Value, B#Value)): (String, Json.JsValueWrapper) = (x._1.toString, x._2)
 

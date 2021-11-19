@@ -17,9 +17,9 @@
 package uk.gov.hmrc.decisionservice.services
 
 import org.mockito.ArgumentMatchers
-import org.mockito.Mockito._
-import org.scalatest.{Matchers, WordSpecLike}
-import org.scalatestplus.mockito.MockitoSugar
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
+import org.mockito.MockitoSugar
 import play.api.test.Helpers.{await, defaultAwaitTimeout}
 import uk.gov.hmrc.decisionservice.models._
 import uk.gov.hmrc.decisionservice.models.enums._
@@ -28,7 +28,7 @@ import uk.gov.hmrc.decisionservice.ruleEngines._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class DecisionServiceSpec extends WordSpecLike with Matchers {
+class DecisionServiceSpec extends AnyWordSpecLike with Matchers {
 
   private trait Setup extends MockitoSugar {
     val exit = mock[ExitRuleEngine]

@@ -16,13 +16,14 @@
 
 package uk.gov.hmrc.decisionservice.ruleEngines
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import play.api.test.Helpers.{await, defaultAwaitTimeout}
 import uk.gov.hmrc.decisionservice.models.Exit
 import uk.gov.hmrc.decisionservice.models.enums.{DecisionServiceVersion, ExitEnum}
 import uk.gov.hmrc.decisionservice.ruleSets.EarlyExitRules
 
-class ExitRuleEngineSpec extends WordSpecLike with Matchers {
+class ExitRuleEngineSpec extends AnyWordSpecLike with Matchers {
 
   object TestExitRuleEngine extends ExitRuleEngine
 

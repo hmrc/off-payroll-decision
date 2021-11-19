@@ -16,7 +16,8 @@
 
 package uk.gov.hmrc.decisionservice.config.ruleSets.v1_5_0
 
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpecLike
 import org.scalatestplus.play.guice.GuiceOneAppPerSuite
 import play.api.libs.json.Json
 import uk.gov.hmrc.decisionservice.config.ruleSets.BaseRuleSpec
@@ -24,7 +25,7 @@ import uk.gov.hmrc.decisionservice.models.Exit
 import uk.gov.hmrc.decisionservice.models.enums.ExitEnum
 import uk.gov.hmrc.decisionservice.ruleSets.EarlyExitRules_v150
 
-class EarlyExitRulesSpec extends BaseRuleSpec with GuiceOneAppPerSuite with WordSpecLike with Matchers {
+class EarlyExitRulesSpec extends BaseRuleSpec with GuiceOneAppPerSuite with AnyWordSpecLike with Matchers {
 
   implicit val ruleSet = EarlyExitRules_v150.ruleSet
 
